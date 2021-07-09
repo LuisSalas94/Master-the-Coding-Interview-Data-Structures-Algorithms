@@ -1,15 +1,17 @@
 class Node {
-	constructor(value, next) {
+	constructor(value, next, prev) {
 		this.value = value;
 		this.next = null;
+		this.prev = null;
 	}
 }
 
-class LinkedList {
+class DoublyLinkedList {
 	constructor(value, head, next, tail, length) {
 		this.head = {
 			value: value,
 			next: null,
+			prev: null,
 		};
 		this.tail = this.head;
 		this.length = 1;
@@ -17,18 +19,16 @@ class LinkedList {
 
 	append(value) {
 		const newNode = new Node(value);
+		newNode.prev = this.tail;
 		this.tail.next = newNode;
 		this.tail = newNode;
 		this.length++;
 	}
 
 	prepend(value) {
-		/* const newNode = {
-			value: value,
-			next: null,
-		}; */
 		const newNode = new Node(value);
 		newNode.next = this.head;
+		this.head.prev = newNode;
 		this.head = newNode;
 		this.length++;
 	}
@@ -48,9 +48,11 @@ class LinkedList {
 		const newNode = new Node(value);
 		//get the previous node before desired new node
 		const leader = this.traverseToIndex(index - 1);
-		const nextPointer = leader.next;
+		const follower = leader.next;
 		leader.next = newNode;
-		newNode.next = nextPointer;
+		newNode.prev = leader;
+		newNode.next = follower;
+		follower.prev = newNode;
 		this.length++;
 		return this.printList();
 	}
@@ -72,31 +74,11 @@ class LinkedList {
 		this.length--;
 		return this.printList();
 	}
-
-	reverse() {
-		if (!this.head.next) return this.head;
-		let first = this.head;
-		this.tail = this.head;
-		let second = first.next;
-		while (second) {
-			const temp = second.next;
-			second.next = first;
-			first = second;
-			second = temp;
-		}
-		this.head.next = null;
-		this.head = first;
-		return this.printList();
-	}
 }
 
-const myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
-myLinkedList.append(16);
-myLinkedList.prepend(1);
-myLinkedList.insert(2, 99);
-//console.log(myLinkedList.printList());
-//yLinkedList.remove(2);
-myLinkedList.reverse();
-console.log(myLinkedList.printList());
-//console.log(myLinkedList.traverseToIndex(2));
+const myDoublyLinkedList = new DoublyLinkedList(10);
+myDoublyLinkedList.append(5);
+myDoublyLinkedList.append(16);
+myDoublyLinkedList.prepend(1);
+myDoublyLinkedList.insert(2, 99);
+console.log(myDoublyLinkedList.printList());
