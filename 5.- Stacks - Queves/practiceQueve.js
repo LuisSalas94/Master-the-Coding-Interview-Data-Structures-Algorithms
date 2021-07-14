@@ -1,5 +1,5 @@
 class Node {
-	constructor(value) {
+	constructor(value, next) {
 		this.value = value;
 		this.next = null;
 	}
@@ -12,14 +12,10 @@ class Queve {
 		this.length = 0;
 	}
 
-	//get first element
-	peek() {
-		return this.first;
-	}
-
 	//add
 	enqueve(value) {
 		const newNode = new Node(value);
+		//if empty
 		if (this.length === 0) {
 			this.first = newNode;
 			this.last = newNode;
@@ -40,18 +36,30 @@ class Queve {
 			this.last = null;
 		}
 
-		const holdingPointer = this.first;
+		const tempPointer = this.first;
 		this.first = this.first.next;
 		this.length--;
-		return this;
+	}
+
+	//first element
+	peek() {
+		return this.first.value;
+	}
+
+	printList() {
+		const array = [];
+		let currentFirst = this.first;
+		while (currentFirst !== null) {
+			array.push(currentFirst.value);
+			currentFirst = currentFirst.next;
+		}
+		return array;
 	}
 }
 
 const myQueve = new Queve();
-myQueve.enqueve("maria");
-myQueve.enqueve("claudia");
-myQueve.enqueve("paola");
-myQueve.enqueve("milagros");
+myQueve.enqueve(10);
+myQueve.enqueve(20);
+myQueve.enqueve(30);
 myQueve.dequeve();
-
-console.log(myQueve);
+console.log(myQueve.printList());
