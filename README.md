@@ -1,5 +1,8 @@
 # Master-the-Coding-Interview-Data-Structures-Algorithms
 
+![https___ccweb imgix net_https%3A%2F%2Fd3f1iyfxxz8i1e cloudfront net%2Fcourses%2Fcourse_image%2F6eef85f8ae95 jpg_ar=16%3A9 auto=format cs=strip fit=crop h=380 ixlib=php-3 3](https://user-images.githubusercontent.com/57297709/126914635-3402dac4-5bff-4e05-96e6-86011c427b33.jpg)
+
+
 Descripción
 Updated for 2021 hiring season! Join a live online community of over 400,000+ developers and a course taught by an industry expert that has actually worked both in Silicon Valley and Toronto as a senior developer. Graduates of this course are now working at Google, Tesla, Amazon, Apple, IBM, JP Morgan, Facebook + other top tech companies.
 
